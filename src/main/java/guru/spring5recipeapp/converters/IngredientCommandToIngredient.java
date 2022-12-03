@@ -1,6 +1,6 @@
 package guru.spring5recipeapp.converters;
 
-import guru.spring5recipeapp.commans.IngredientCommand;
+import guru.spring5recipeapp.commands.IngredientCommand;
 import guru.spring5recipeapp.domain.Ingredient;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
@@ -26,7 +26,7 @@ public class IngredientCommandToIngredient implements Converter<IngredientComman
         ingredient.setId(source.getId());
         ingredient.setAmount(source.getAmount());
         ingredient.setDescription(source.getDescription());
-        ingredient.setUom(uomConverter.convert(source.getUnitOfMeasure()));
+        ingredient.setUom(uomConverter.convert(source.getUom()));
         return ingredient;
     }
 }

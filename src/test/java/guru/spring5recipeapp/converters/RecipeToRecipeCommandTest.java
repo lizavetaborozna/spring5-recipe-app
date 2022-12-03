@@ -1,6 +1,6 @@
 package guru.spring5recipeapp.converters;
 
-import guru.spring5recipeapp.commans.RecipeCommand;
+import guru.spring5recipeapp.commands.RecipeCommand;
 import guru.spring5recipeapp.domain.*;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package guru.spring5recipeapp.commans;
+package guru.spring5recipeapp.commands;
 
 import guru.spring5recipeapp.domain.Difficulty;
 import lombok.Getter;

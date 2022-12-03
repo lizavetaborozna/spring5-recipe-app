@@ -1,7 +1,7 @@
 package guru.spring5recipeapp.converters;
 
-import guru.spring5recipeapp.commans.IngredientCommand;
-import guru.spring5recipeapp.commans.UnitOfMeasureCommand;
+import guru.spring5recipeapp.commands.IngredientCommand;
+import guru.spring5recipeapp.commands.UnitOfMeasureCommand;
 import guru.spring5recipeapp.domain.Ingredient;
 import guru.spring5recipeapp.domain.Recipe;
 import org.junit.Before;
@@ -45,7 +45,7 @@ public class IngredientCommandToIngredientTest {
         command.setDescription(DESCRIPTION);
         UnitOfMeasureCommand unitOfMeasureCommand = new UnitOfMeasureCommand();
         unitOfMeasureCommand.setId(UOM_ID);
-        command.setUnitOfMeasure(unitOfMeasureCommand);
+        command.setUom(unitOfMeasureCommand);
 
         //when
         Ingredient ingredient = converter.convert(command);

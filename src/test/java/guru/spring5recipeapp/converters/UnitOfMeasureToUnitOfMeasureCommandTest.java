@@ -1,6 +1,6 @@
 package guru.spring5recipeapp.converters;
 
-import guru.spring5recipeapp.commans.UnitOfMeasureCommand;
+import guru.spring5recipeapp.commands.UnitOfMeasureCommand;
 import guru.spring5recipeapp.domain.UnitOfMeasure;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;

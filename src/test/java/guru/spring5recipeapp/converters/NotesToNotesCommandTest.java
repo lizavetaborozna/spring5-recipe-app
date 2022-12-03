@@ -1,6 +1,6 @@
 package guru.spring5recipeapp.converters;
 
-import guru.spring5recipeapp.commans.NotesCommand;
+import guru.spring5recipeapp.commands.NotesCommand;
 import guru.spring5recipeapp.domain.Notes;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;

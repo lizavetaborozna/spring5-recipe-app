@@ -1,6 +1,6 @@
 package guru.spring5recipeapp.converters;
 
-import guru.spring5recipeapp.commans.CategoryCommand;
+import guru.spring5recipeapp.commands.CategoryCommand;
 import guru.spring5recipeapp.domain.Category;
 import lombok.Synchronized;
 import org.springframework.stereotype.Component;

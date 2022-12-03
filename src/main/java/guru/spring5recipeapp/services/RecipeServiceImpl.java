@@ -1,6 +1,6 @@
 package guru.spring5recipeapp.services;
 
-import guru.spring5recipeapp.commans.RecipeCommand;
+import guru.spring5recipeapp.commands.RecipeCommand;
 import guru.spring5recipeapp.converters.RecipeCommandToRecipe;
 import guru.spring5recipeapp.converters.RecipeToRecipeCommand;
 import guru.spring5recipeapp.domain.Recipe;
@@ -53,5 +53,11 @@ public class RecipeServiceImpl implements RecipeService {
         Recipe savedRecipe = recipeRepository.save(detachedRecipe);
         log.debug("Saved RecipeId:" + savedRecipe.getId());
         return recipeToRecipeCommand.convert(savedRecipe);
+    }
+
+    @Override
+    @Transactional
+    public RecipeCommand findCommandById(Long id) {
+        return recipeToRecipeCommand.convert(findById(id));
     }
 }

@@ -1,9 +1,9 @@
 package guru.spring5recipeapp.converters;
 
-import guru.spring5recipeapp.commans.CategoryCommand;
-import guru.spring5recipeapp.commans.IngredientCommand;
-import guru.spring5recipeapp.commans.NotesCommand;
-import guru.spring5recipeapp.commans.RecipeCommand;
+import guru.spring5recipeapp.commands.CategoryCommand;
+import guru.spring5recipeapp.commands.IngredientCommand;
+import guru.spring5recipeapp.commands.NotesCommand;
+import guru.spring5recipeapp.commands.RecipeCommand;
 import guru.spring5recipeapp.domain.Difficulty;
 import guru.spring5recipeapp.domain.Recipe;
 import org.junit.Before;
