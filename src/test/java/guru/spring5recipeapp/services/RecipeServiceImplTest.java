@@ -1,5 +1,6 @@
 package guru.spring5recipeapp.services;
 
+import guru.spring5recipeapp.commands.RecipeCommand;
 import guru.spring5recipeapp.converters.RecipeCommandToRecipe;
 import guru.spring5recipeapp.converters.RecipeToRecipeCommand;
 import guru.spring5recipeapp.domain.Recipe;
@@ -17,6 +18,7 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 public class RecipeServiceImplTest {
+
     RecipeServiceImpl recipeService;
 
     @Mock
@@ -30,13 +32,13 @@ public class RecipeServiceImplTest {
 
     @Before
     public void setUp() throws Exception {
-        MockitoAnnotations.openMocks(this);
+        MockitoAnnotations.initMocks(this);
 
         recipeService = new RecipeServiceImpl(recipeRepository, recipeCommandToRecipe, recipeToRecipeCommand);
     }
 
     @Test
-    public void getRecipesByIdTest() {
+    public void getRecipeByIdTest() throws Exception {
         Recipe recipe = new Recipe();
         recipe.setId(1L);
         Optional<Recipe> recipeOptional = Optional.of(recipe);
@@ -48,18 +50,41 @@ public class RecipeServiceImplTest {
         assertNotNull("Null recipe returned", recipeReturned);
         verify(recipeRepository, times(1)).findById(anyLong());
         verify(recipeRepository, never()).findAll();
-
     }
 
     @Test
-    public void getRecipes() {
+    public void getRecipeCoomandByIdTest() throws Exception {
         Recipe recipe = new Recipe();
-        HashSet recipeData = new HashSet();
-        recipeData.add(recipe);
+        recipe.setId(1L);
+        Optional<Recipe> recipeOptional = Optional.of(recipe);
 
-        when(recipeRepository.findAll()).thenReturn(recipeData);
-        Set<Recipe> recipeSet = recipeService.getRecipes();
-        assertEquals(recipeSet.size(), 1);
+        when(recipeRepository.findById(anyLong())).thenReturn(recipeOptional);
+
+        RecipeCommand recipeCommand = new RecipeCommand();
+        recipeCommand.setId(1L);
+
+        when(recipeToRecipeCommand.convert(any())).thenReturn(recipeCommand);
+
+        RecipeCommand commandById = recipeService.findCommandById(1L);
+
+        assertNotNull("Null recipe returned", commandById);
+        verify(recipeRepository, times(1)).findById(anyLong());
+        verify(recipeRepository, never()).findAll();
+    }
+
+    @Test
+    public void getRecipesTest() throws Exception {
+
+        Recipe recipe = new Recipe();
+        HashSet receipesData = new HashSet();
+        receipesData.add(recipe);
+
+        when(recipeRepository.findAll()).thenReturn(receipesData);
+
+        Set<Recipe> recipes = recipeService.getRecipes();
+
+        assertEquals(recipes.size(), 1);
         verify(recipeRepository, times(1)).findAll();
+        verify(recipeRepository, never()).findById(anyLong());
     }
 }
