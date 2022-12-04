@@ -1,6 +1,7 @@
 package guru.spring5recipeapp.controllers;
 
 import guru.spring5recipeapp.commands.RecipeCommand;
+import guru.spring5recipeapp.services.IngredientService;
 import guru.spring5recipeapp.services.RecipeService;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
@@ -17,6 +18,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 public class IngredientControllerTest {
 
+    @Mock
+    IngredientService ingredientService;
 
     @Mock
     RecipeService recipeService;
@@ -29,7 +32,7 @@ public class IngredientControllerTest {
     public void setUp() throws Exception {
         MockitoAnnotations.openMocks(this);
 
-        controller = new IngredientController( recipeService);
+        controller = new IngredientController(recipeService, ingredientService);
         mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
     }
 
